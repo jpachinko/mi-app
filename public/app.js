@@ -5,14 +5,18 @@ async function cargarRegistros() {
   const lista = document.getElementById("lista");
   lista.innerHTML = "";
 
-  data.forEach((item, i) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${item.nombre}</strong> — ${item.cantidad}
-      <button onclick="editar(${i})">Editar</button>
-    `;
-    lista.appendChild(li);
-  });
+ data.forEach((item, i) => {
+  const li = document.createElement("li");
+  li.classList.add("item-row");
+
+  li.innerHTML = `
+    <span><strong>${item.nombre}</strong> — ${item.cantidad}</span>
+    <button onclick="editar(${i})">Editar</button>
+  `;
+
+  lista.appendChild(li);
+});
+
 }
 
 document.getElementById("form").addEventListener("submit", async (e) => {
